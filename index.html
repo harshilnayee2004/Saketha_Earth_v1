@@ -187,31 +187,30 @@
       
       <!-- Layer 1 (z-0): Full Background Villa Landscape with Sky and Reflections -->
       <div class="absolute inset-0 z-0">
-        <img id="hero-bg-img" src="villa_bg_full.jpg" alt="Saketha Architectural Villa Horizon" class="w-full h-full object-cover object-[38%_center] sm:object-center scale-105 will-change-transform" />
-        <!-- Subtle Ambient Vignettes for Nav Legibility and Sky Typography Contrast -->
-        <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/35 to-transparent pointer-events-none"></div>
-        <div class="absolute inset-y-0 left-0 w-3/4 sm:w-1/2 bg-gradient-to-r from-slate-950/25 via-slate-900/10 to-transparent pointer-events-none"></div>
+        <img id="hero-bg-img" src="villa_bg_full.jpg" alt="Saketha Architectural Villa Horizon" class="w-full h-full object-cover object-[56%_center] sm:object-center scale-105 will-change-transform" />
+        <!-- Subtle Ambient Top Gradient for Nav Legibility -->
+        <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/25 to-transparent pointer-events-none"></div>
       </div>
 
       <!-- Layer 2 (z-10): 3D Architectural Behind-Building Typography (Directly matching User Reference) -->
-      <!-- Tucked naturally behind the lower wing roofline; emerges and rises into open sky on scroll -->
-      <div id="hero-3d-text-back" class="hero-3d-text-layer absolute inset-0 flex flex-col justify-start items-start text-left pl-5 sm:pl-16 md:pl-20 lg:pl-28 xl:pl-32 max-w-xs sm:max-w-2xl lg:max-w-3xl pointer-events-none z-10 select-none pt-[22vh] sm:pt-[20vh] lg:pt-[21vh] will-change-transform">
+      <!-- Tucked naturally behind the building; emerges diagonally and rises into open sky on scroll -->
+      <div id="hero-3d-text-back" class="hero-3d-text-layer absolute inset-0 flex flex-col justify-start items-start text-left pl-5 sm:pl-16 md:pl-20 lg:pl-28 xl:pl-32 max-w-xs sm:max-w-2xl lg:max-w-3xl pointer-events-none z-10 select-none pt-[16vh] sm:pt-[20vh] lg:pt-[21vh] will-change-transform">
         <div class="space-y-1 sm:space-y-4 lg:space-y-5">
-          <div class="font-sans font-medium text-lg sm:text-2xl md:text-3xl lg:text-[34px] text-white tracking-normal drop-shadow-[0_4px_12px_rgba(0,0,0,0.7)] hero-text-contrast">
+          <div class="font-sans font-medium text-lg sm:text-2xl md:text-3xl lg:text-[34px] text-white tracking-normal hero-title-aesthetic">
             Where Luxury
           </div>
-          <div class="font-sans font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[66px] xl:text-[74px] text-white tracking-tight leading-[1.08] drop-shadow-[0_8px_24px_rgba(0,0,0,0.75)] hero-text-contrast">
+          <div class="font-sans font-bold text-3xl sm:text-5xl md:text-6xl lg:text-[66px] xl:text-[74px] text-white tracking-tight leading-[1.08] hero-title-aesthetic">
             Finds Its
           </div>
-          <div class="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-[80px] xl:text-[90px] text-white tracking-tight leading-[1.05] drop-shadow-[0_12px_32px_rgba(0,0,0,0.85)] hero-text-contrast">
+          <div class="font-sans font-extrabold text-4xl sm:text-6xl md:text-7xl lg:text-[80px] xl:text-[90px] text-white tracking-tight leading-[1.05] hero-title-aesthetic">
             Home
           </div>
         </div>
       </div>
 
-      <!-- Layer 3 (z-20): Foreground Architectural Villa Cutout (Overlaps the bottom of 'Home') -->
+      <!-- Layer 3 (z-20): Foreground Architectural Villa Cutout (Overlaps the letters) -->
       <div class="absolute inset-0 z-20 pointer-events-none">
-        <img id="hero-foreground-villa" src="villa_foreground.png" alt="Architectural Modern Villa Cutout" class="w-full h-full object-cover object-[38%_center] sm:object-center scale-105 will-change-transform" />
+        <img id="hero-foreground-villa" src="villa_foreground.png" alt="Architectural Modern Villa Cutout" class="w-full h-full object-cover object-[56%_center] sm:object-center scale-105 will-change-transform" />
       </div>
 
       <!-- Empty Spacer for Top Flex Alignment -->
