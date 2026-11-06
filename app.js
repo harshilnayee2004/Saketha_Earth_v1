@@ -992,14 +992,19 @@ function init3DHeroParallax() {
     const emergence = Math.min(1, smoothProgress / 0.50);
     const easeOut = 1 - Math.pow(1 - emergence, 3);
 
-    // Initial state: shifted +75px right (behind building), +35px down, -100px Z, rotated -7deg Y
-    // Full scroll state: shifted -20px left, -70px up, 0px Z, rotated 0deg Y (100% visible in open sky)
-    const currentX = (75 * (1 - easeOut)) - (20 * easeOut) + (-mouseX * 14);
-    const currentY = (35 * (1 - easeOut)) - (70 * easeOut) + (-mouseY * 8);
-    const currentZ = -100 * (1 - easeOut);
-    const currentRotY = (-7 * (1 - easeOut)) + (mouseX * 3);
-    const currentRotX = (3 * (1 - easeOut)) + (-mouseY * 2);
-    const textScale = 0.95 + (easeOut * 0.11);
+    const isMobile = window.innerWidth < 640;
+    // Initial state: shifted behind building, emerges into open sky
+    const startX = isMobile ? 22 : 75;
+    const endX = isMobile ? -8 : -20;
+    const startY = isMobile ? 12 : 35;
+    const endY = isMobile ? -40 : -70;
+
+    const currentX = (startX * (1 - easeOut)) + (endX * easeOut) + (-mouseX * (isMobile ? 5 : 14));
+    const currentY = (startY * (1 - easeOut)) + (endY * easeOut) + (-mouseY * (isMobile ? 4 : 8));
+    const currentZ = (isMobile ? -50 : -100) * (1 - easeOut);
+    const currentRotY = ((-5) * (1 - easeOut)) + (mouseX * (isMobile ? 1.5 : 3));
+    const currentRotX = (2 * (1 - easeOut)) + (-mouseY * 2);
+    const textScale = 0.96 + (easeOut * (isMobile ? 0.08 : 0.11));
 
     const transformStr = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, ${currentZ.toFixed(2)}px) rotateY(${currentRotY.toFixed(2)}deg) rotateX(${currentRotX.toFixed(2)}deg) scale(${textScale.toFixed(3)})`;
 
@@ -1157,4 +1162,33 @@ function filterPortfolio(category) {
       card.style.display = "none";
     }
   });
+}
+
+// 17. Mobile Menu Toggle Controller
+function toggleMobileMenu() {
+  const drawer = document.getElementById("mobile-nav-drawer");
+  const icon = document.getElementById("mobile-menu-icon");
+  if (!drawer) return;
+  const isHidden = drawer.classList.contains("hidden");
+  if (isHidden) {
+    drawer.classList.remove("hidden");
+    drawer.classList.add("flex");
+    if (icon) icon.setAttribute("data-lucide", "x");
+  } else {
+    drawer.classList.add("hidden");
+    drawer.classList.remove("flex");
+    if (icon) icon.setAttribute("data-lucide", "menu");
+  }
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function closeMobileMenu() {
+  const drawer = document.getElementById("mobile-nav-drawer");
+  const icon = document.getElementById("mobile-menu-icon");
+  if (drawer) {
+    drawer.classList.add("hidden");
+    drawer.classList.remove("flex");
+  }
+  if (icon) icon.setAttribute("data-lucide", "menu");
+  if (window.lucide) window.lucide.createIcons();
 }

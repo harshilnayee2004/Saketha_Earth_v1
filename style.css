@@ -618,3 +618,25 @@ input[type=range]::-webkit-slider-thumb:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #DFCBAB;
 }
+
+/* Mobile Performance, Scroll & Touch Utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (max-width: 640px) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  /* Safe interactive mobile touch target */
+  button, a, input, select, textarea {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
