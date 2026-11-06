@@ -1,0 +1,620 @@
+/* ==========================================================================
+   Saketha Earth Luxury Estates
+   Light Premium Editorial Theme (Image 1) + 3D Text-Behind-Building Hero (Image 2)
+   Animate UI Spring Motion & Cadastral Precision
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+:root {
+  --font-display: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-mono: 'Inter', -apple-system, sans-serif;
+  --font-brand: 'Inter', -apple-system, sans-serif;
+  --font-syne: 'Inter', -apple-system, sans-serif;
+
+  /* Light Premium Luxury Palette (Reference Image 1 & 2) */
+  --bg-deep: #F4F1EA;
+  --bg-base: #FAF8F5;
+  --bg-surface: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-ivory: #F8F5EE;
+  --bg-sand: #F2EFE8;
+  
+  /* Mediterranean Azure & Coastal Mineral Accents */
+  --champagne-light: #F0F9FF;
+  --champagne-gold: #0284C7;
+  --champagne-brass: #0369A1;
+  --champagne-deep: #0284C7;
+  --champagne-glow: rgba(2, 132, 199, 0.22);
+  --champagne-hairline: rgba(2, 132, 199, 0.3);
+  
+  /* Crisp Editorial Typography */
+  --text-dark: #121417;
+  --text-primary: #1C1E22;
+  --text-secondary: #484C55;
+  --text-muted: #7E8492;
+  --text-silk: #FAF8F5;
+  
+  /* Architectural Patina & Minerals */
+  --sage-patina: #3E7C65;
+  --sage-soft: #74AB93;
+  --sage-glow: rgba(62, 124, 101, 0.16);
+  --mineral-slate: #53758D;
+  --mineral-soft: #8CAEC4;
+  --mineral-glow: rgba(83, 117, 141, 0.16);
+  --cognac-prime: #B87C39;
+
+  /* Light Frosted Glassmorphism & Smoked Accents */
+  --glass-bg-pill: rgba(255, 255, 255, 0.85);
+  --glass-border-pill: rgba(215, 201, 178, 0.45);
+  --glass-bg-card: rgba(255, 255, 255, 0.92);
+  --glass-border-card: rgba(226, 218, 206, 0.7);
+  --glass-blur: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Light Editorial Glassmorphism */
+.ios-glass-light {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(215, 201, 178, 0.55);
+  box-shadow: 
+    0 20px 45px -12px rgba(20, 24, 30, 0.06),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+}
+
+.card-editorial-light {
+  background: #FFFFFF;
+  border: 1px solid #EAE4D9;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px -10px rgba(18, 20, 24, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-editorial-light:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px -15px rgba(18, 20, 24, 0.1);
+  border-color: #0284C7;
+}
+
+/* Floating Nav Active Pill Dynamic Indicator */
+#nav-active-pill {
+  position: absolute;
+  border-radius: 9999px;
+  background-color: #14161B;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  transition: left 320ms cubic-bezier(0.16, 1, 0.3, 1), width 320ms cubic-bezier(0.16, 1, 0.3, 1), top 320ms cubic-bezier(0.16, 1, 0.3, 1), height 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3D Text-Behind-Building Hero Styles */
+#hero-3d-scene, #hero-sticky-frame {
+  perspective: 1200px;
+  perspective-origin: 35% 45%;
+}
+
+#hero-3d-text-back, #hero-3d-text {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transform-origin: 20% 50%;
+}
+
+#hero-foreground-villa {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Classical Architectural Serif Heading */
+.font-serif-luxury {
+  font-family: var(--font-serif);
+  letter-spacing: 0.08em;
+}
+
+/* Spring Physics & Motion Primitives (Animate UI) */
+.spring-interactive {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease;
+}
+
+.spring-interactive:hover {
+  transform: scale(1.02);
+}
+
+.spring-interactive:active {
+  transform: scale(0.98);
+}
+
+/* CAD Blueprint Room Interactive Hotspots */
+.cad-room-hotspot {
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cad-room-hotspot:hover {
+  fill: rgba(197, 168, 119, 0.15) !important;
+  stroke: #A98754 !important;
+  stroke-width: 2px !important;
+}
+
+/* Clean Dark Luxury Button */
+.btn-luxury-dark {
+  background: #14161B;
+  color: #FAF8F5;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px -8px rgba(18, 20, 24, 0.35);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-luxury-dark:hover {
+  background: #232730;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 35px -10px rgba(18, 20, 24, 0.45);
+}
+
+/* ==========================================================================
+   Hover.dev Smooth Scroll Hero & Sticky Architecture
+   ========================================================================== */
+#smooth-scroll-hero {
+  position: relative;
+  height: 250vh;
+  background-color: #07090e;
+}
+
+.ssh-sticky-viewport {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#ssh-frame {
+  will-change: clip-path, transform;
+}
+
+#ssh-hero-content, #ssh-schedule-content {
+  will-change: transform, opacity;
+}
+
+/* Lenis Recommended Engine Styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Clean Modern Architectural & Luxury Typography System
+   ========================================================================== */
+.font-display-hero {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.font-syne-brand {
+  font-family: var(--font-brand);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.font-mono-tech {
+  font-family: var(--font-sans);
+  letter-spacing: 0.04em;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Architectural Grid Lines (Fine Champagne Blueprint Hairlines) */
+.architectural-grid {
+  background-image: 
+    linear-gradient(to right, rgba(223, 203, 171, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(223, 203, 171, 0.025) 1px, transparent 1px);
+  background-size: 25% 100%, 100% 120px;
+}
+
+/* ==========================================================================
+   iOS Smoked Quartz Glass (Glassmorphism) — Luxury Editorial Palette
+   ========================================================================== */
+.ios-glass-pill {
+  background: rgba(20, 23, 30, 0.62);
+  backdrop-filter: blur(28px) saturate(160%);
+  -webkit-backdrop-filter: blur(28px) saturate(160%);
+  border: 1px solid rgba(223, 203, 171, 0.22);
+  box-shadow: 
+    0 16px 40px -10px rgba(0, 0, 0, 0.55),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.ios-glass-card {
+  background: rgba(16, 19, 25, 0.72);
+  backdrop-filter: blur(34px) saturate(170%);
+  -webkit-backdrop-filter: blur(34px) saturate(170%);
+  border: 1px solid rgba(223, 203, 171, 0.16);
+  box-shadow: 
+    0 24px 50px -12px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.14),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.ios-glass-dark {
+  background: rgba(12, 14, 19, 0.82);
+  backdrop-filter: blur(36px) saturate(180%);
+  -webkit-backdrop-filter: blur(36px) saturate(180%);
+  border: 1px solid rgba(223, 203, 171, 0.12);
+  box-shadow: 
+    0 30px 65px -15px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.ios-glass-popover {
+  background: rgba(15, 18, 24, 0.88);
+  backdrop-filter: blur(40px) saturate(190%);
+  -webkit-backdrop-filter: blur(40px) saturate(190%);
+  border: 1px solid rgba(223, 203, 171, 0.25);
+  box-shadow: 
+    0 35px 80px -15px rgba(0, 0, 0, 0.75),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   React Bits Animations (https://reactbits.dev)
+   ========================================================================== */
+
+/* 1. React Bits: ShinyText — Liquid Champagne & Silk Metallic */
+@keyframes shiny-text {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shiny-text {
+  background: linear-gradient(
+    110deg,
+    #FAF8F5 15%,
+    #F3E8D3 35%,
+    #DFCBAB 50%,
+    #F3E8D3 65%,
+    #FAF8F5 85%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shiny-text 5s infinite linear;
+}
+
+.shiny-text-gold {
+  background: linear-gradient(
+    110deg,
+    #0284C7 15%,
+    #F0F9FF 45%,
+    #38BDF8 55%,
+    #0284C7 85%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shiny-text 4s infinite linear;
+}
+
+/* 2. React Bits: SpotlightCard — Warm Champagne Volumetric Hover */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(223, 203, 171, 0.12);
+}
+
+.spotlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    550px circle at var(--mouse-x) var(--mouse-y),
+    var(--spotlight-color),
+    transparent 80%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Luxury Primary Champagne Button */
+.btn-luxury-primary {
+  background: linear-gradient(135deg, #F5ECDA 0%, #DFCBAB 50%, #CBB085 100%);
+  color: #0E1014 !important;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 10px 30px -6px rgba(203, 176, 133, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.85);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-luxury-primary:hover {
+  background: linear-gradient(135deg, #FFFFFF 0%, #EFE3CE 50%, #D8BE93 100%);
+  color: #000000 !important;
+  transform: translateY(-2px);
+  box-shadow: 
+    0 16px 40px -8px rgba(203, 176, 133, 0.55),
+    inset 0 1px 2px rgba(255, 255, 255, 0.95);
+}
+
+/* Luxury Secondary Glass Button */
+.btn-luxury-glass {
+  background: rgba(22, 25, 33, 0.65);
+  color: #EDE8DF !important;
+  border: 1px solid rgba(223, 203, 171, 0.28);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-luxury-glass:hover {
+  background: rgba(223, 203, 171, 0.15);
+  color: #FAF8F5 !important;
+  border-color: rgba(223, 203, 171, 0.55);
+  transform: translateY(-2px);
+}
+
+/* 3. React Bits: 3D Tilt Card */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.tilt-inner {
+  transform: translateZ(25px);
+}
+
+/* 4. React Bits: Magnet Button */
+.magnet-btn {
+  display: inline-flex;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* 5. React Bits: TrueFocus / Blur Reveal */
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float-subtle 6s infinite ease-in-out;
+}
+
+.animate-float-delayed {
+  animation: float-subtle 7s infinite ease-in-out 2s;
+}
+
+/* Soundwave / Mini chart bar animation */
+@keyframes bar-pulse {
+  0%, 100% { height: 25%; }
+  50% { height: 95%; }
+}
+
+.chart-bar-anim {
+  animation: bar-pulse 2s infinite ease-in-out;
+}
+
+/* Vanta Clouds Canvas styling */
+#vanta-clouds, #vanta-clouds-contact {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Custom Minimal Range Sliders */
+input[type=range] {
+  -webkit-appearance: none;
+  background: rgba(223, 203, 171, 0.2);
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #FAF8F5;
+  border: 2px solid #DFCBAB;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+  background: #DFCBAB;
+}
+
+/* Plot minimal item in CAD grid */
+.plot-cad-item {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid rgba(223, 203, 171, 0.12);
+}
+
+.plot-cad-item:hover {
+  border-color: rgba(223, 203, 171, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.plot-cad-item.active-selected {
+  border-color: #DFCBAB;
+  background: rgba(223, 203, 171, 0.18) !important;
+  box-shadow: 0 0 20px rgba(223, 203, 171, 0.3);
+}
+
+/* ==========================================================================
+   Architectural Cadastral Master Plan Blueprint Styling
+   ========================================================================== */
+.cad-svg-container {
+  position: relative;
+  background: radial-gradient(circle at 45% 45%, #10141b 0%, #06080b 100%);
+  border: 1px solid rgba(223, 203, 171, 0.14);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.75);
+}
+
+.cad-plot {
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  transform-origin: center;
+}
+
+.cad-plot:hover {
+  filter: brightness(1.2) drop-shadow(0 4px 14px rgba(223, 203, 171, 0.3));
+}
+
+.cad-plot .plot-bg {
+  transition: fill 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+.cad-plot.is-selected {
+  filter: drop-shadow(0 0 18px rgba(223, 203, 171, 0.55));
+}
+
+.cad-plot.is-dimmed {
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+.cad-dim-text {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  fill: rgba(223, 203, 171, 0.45);
+  letter-spacing: 0.5px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.cad-plot-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13.5px;
+  fill: #FAF8F5;
+  letter-spacing: 0.5px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.cad-plot-sqyd {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 9.5px;
+  fill: rgba(245, 236, 218, 0.85);
+  letter-spacing: 0.3px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.cad-plot-facing {
+  font-family: var(--font-mono);
+  font-size: 7.5px;
+  fill: #DFCBAB;
+  letter-spacing: 0.8px;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes compass-pulse {
+  0%, 100% { opacity: 0.85; }
+  50% { opacity: 1; }
+}
+
+.compass-rose {
+  animation: compass-pulse 4s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   Hover.dev Smooth Scroll Hero Styling (Apple / iOS Minimal Luxury)
+   ========================================================================== */
+#smooth-scroll-hero {
+  will-change: transform;
+}
+
+#ssh-frame {
+  will-change: clip-path, transform;
+  transform-origin: center center;
+}
+
+#ssh-hero-content,
+#ssh-schedule-content {
+  will-change: opacity, transform;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #08090C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(223, 203, 171, 0.25);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #DFCBAB;
+}

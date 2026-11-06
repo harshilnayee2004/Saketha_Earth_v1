@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saketha Earth &mdash; The Infinite Precision of Living</title>
+  <meta name="description" content="Ultra-luxury architectural residences, high-rise penthouses, and master-planned landholdings engineered with uncompromised precision and iOS foggy glass aesthetics.">
+
+  <!-- Google Fonts: Inter (Hamptons Editorial Elegance), Plus Jakarta Sans, Cormorant Garamond (Classical Architectural Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['"Inter"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            mono: ['"Inter"', '-apple-system', 'sans-serif']
+          },
+          colors: {
+            // Mediterranean Azure & Coastal Mineral
+            azure: {
+              50: '#F0F9FF',
+              100: '#E0F2FE',
+              200: '#BAE6FD',
+              300: '#7DD3FC',
+              400: '#38BDF8',
+              500: '#0EA5E9',
+              600: '#0284C7',
+              700: '#0369A1'
+            },
+            // Estate Sage & Cypress
+            emerald: {
+              300: '#98C8B1',
+              400: '#74AB93',
+              500: '#57937A',
+              600: '#437660'
+            },
+            // Travertine Sand & Alabaster
+            travertine: {
+              light: '#FAF8F5',
+              DEFAULT: '#EAE4D9',
+              dark: '#D5C7B3',
+              hairline: 'rgba(213, 199, 179, 0.25)'
+            },
+            // Deep Obsidian tokens
+            noir: {
+              deep: '#07080B',
+              base: '#0B0C0F',
+              card: '#12141A',
+              elevated: '#171A22',
+              hairline: 'rgba(255, 255, 255, 0.1)'
+            },
+            silk: {
+              white: '#FAF9F6',
+              ivory: '#EDE7DE',
+              silver: '#B3B8BE',
+              muted: '#7E8691'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Style -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Lenis Smooth Scroll CDN (Hover.dev / Apple Style Inertial Momentum) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- Three.js & Vanta Clouds CDN for Animated 3D Clouds -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+</head>
+<body class="bg-[#FAF8F5] text-[#14161B] font-sans antialiased selection:bg-sky-200 selection:text-sky-950 min-h-screen">
+
+  <!-- =========================================================================
+       TOP FLOATING LIGHT EDITORIAL NAVIGATION
+       ========================================================================= -->
+  <header id="main-nav-header" class="fixed top-0 left-0 right-0 z-50 py-5 px-6 lg:px-12 w-full transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+      
+      <!-- Minimalist Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl ios-glass-light flex items-center justify-center text-[#14161B] border border-slate-300 shadow-md group-hover:scale-105 transition-all">
+          <svg class="w-5 h-5 text-[#0284C7]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+            <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-bold text-sm tracking-[0.25em] text-[#14161B] uppercase group-hover:text-[#0284C7] transition">
+            Saketha Earth
+          </span>
+          <span class="font-mono-tech text-[8.5px] text-[#7E8492] tracking-[0.35em] uppercase">
+            Private Reserves
+          </span>
+        </div>
+      </a>
+
+      <!-- Center Floating Pill Menu with Dynamic Animated Moving Active Pill -->
+      <nav id="floating-nav-pill-container" class="relative hidden md:flex items-center p-1 rounded-full bg-white/85 backdrop-blur-xl border border-black/10 shadow-[0_8px_30px_rgba(0,0,0,0.08)]">
+        <!-- The Animated Moving Black Pill Indicator -->
+        <div id="nav-active-pill" class="absolute rounded-full bg-[#14161B] shadow-md transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none z-0"></div>
+
+        <a href="#hero-3d-scene" class="nav-item-link relative z-10 px-4 py-1.5 rounded-full font-medium text-xs tracking-wider transition-colors duration-200 text-white" data-target="hero-3d-scene">Overview</a>
+        <a href="#editorial-showcase" class="nav-item-link relative z-10 px-4 py-1.5 rounded-full font-medium text-xs tracking-wider transition-colors duration-200 text-[#484C55] hover:text-[#14161B]" data-target="editorial-showcase">Showcase</a>
+        <a href="#smooth-scroll-hero" class="nav-item-link relative z-10 px-4 py-1.5 rounded-full font-medium text-xs tracking-wider transition-colors duration-200 text-[#484C55] hover:text-[#14161B]" data-target="smooth-scroll-hero">Roadmap</a>
+        <a href="#portfolio-showcase" class="nav-item-link relative z-10 px-4 py-1.5 rounded-full font-medium text-xs tracking-wider transition-colors duration-200 text-[#484C55] hover:text-[#14161B]" data-target="portfolio-showcase">Portfolio</a>
+        <a href="#contact" class="nav-item-link relative z-10 px-4 py-1.5 rounded-full font-medium text-xs tracking-wider transition-colors duration-200 text-[#484C55] hover:text-[#14161B]" data-target="contact">Inquire</a>
+      </nav>
+
+      <!-- Right Action Button -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="spring-interactive btn-luxury-dark px-5 py-2.5 rounded-full font-semibold text-xs tracking-wider shadow-lg flex items-center gap-2">
+          <span>Book a Viewing</span>
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-sky-400"></i>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       HERO SECTION: 3D Text Behind Building (Directly from User Reference Image 2)
+       Scroll-Driven Emergence: Text rises and comes out from behind the building on scroll!
+       Layer 1 (Back): Villa Landscape Panorama
+       Layer 2 (Middle, z-10): Monumental 3D Typography "Where Luxury Finds Its Home"
+       Layer 3 (Front, z-20): Architectural Villa Cutout (Overlaps the bottom of the letters)
+       Layer 4 (z-30): Floating Glass Pill Button "Find Your Luxury"
+       ========================================================================= -->
+  <section id="hero-3d-scene" class="relative h-[180vh] w-full border-b border-[#EAE4D9]">
+    
+    <!-- Pinned Sticky 100vh Viewport -->
+    <div id="hero-sticky-frame" class="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between">
+      
+      <!-- Layer 1 (z-0): Full Background Villa Landscape with Sky and Reflections -->
+      <div class="absolute inset-0 z-0">
+        <img id="hero-bg-img" src="villa_bg_full.jpg" alt="Saketha Architectural Villa Horizon" class="w-full h-full object-cover object-center scale-105 will-change-transform" />
+        <!-- Subtle Ambient Top Gradient for Nav Legibility -->
+        <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/30 to-transparent pointer-events-none"></div>
+      </div>
+
+      <!-- Layer 2 (z-10): 3D Architectural Behind-Building Typography (Directly matching User Reference) -->
+      <!-- Tucked naturally behind the lower wing roofline; emerges and rises into open sky on scroll -->
+      <div id="hero-3d-text-back" class="hero-3d-text-layer absolute inset-0 flex flex-col justify-start items-start text-left pl-8 sm:pl-16 md:pl-20 lg:pl-28 xl:pl-32 max-w-3xl pointer-events-none z-10 select-none pt-[19vh] sm:pt-[20vh] lg:pt-[21vh] will-change-transform">
+        <div class="space-y-3 sm:space-y-4 lg:space-y-5">
+          <div class="font-display font-medium text-xl sm:text-2xl md:text-3xl lg:text-[34px] text-white tracking-normal drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]">
+            Where Luxury
+          </div>
+          <div class="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-[66px] xl:text-[74px] text-white tracking-tight leading-[1.1] drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
+            Finds Its
+          </div>
+          <div class="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-[80px] xl:text-[90px] text-white tracking-tight leading-[1.08] drop-shadow-[0_12px_32px_rgba(0,0,0,0.7)]">
+            Home
+          </div>
+        </div>
+      </div>
+
+      <!-- Layer 3 (z-20): Foreground Architectural Villa Cutout (Overlaps the bottom of 'Home') -->
+      <div class="absolute inset-0 z-20 pointer-events-none">
+        <img id="hero-foreground-villa" src="villa_foreground.png" alt="Architectural Modern Villa Cutout" class="w-full h-full object-cover object-center scale-105 will-change-transform" />
+      </div>
+
+      <!-- Empty Spacer for Top Flex Alignment -->
+      <div></div>
+
+      <!-- Layer 4 (z-30): Floating Interactive Pill (Directly from User Reference Image 2) -->
+      <div id="hero-pill-container" class="relative z-30 pb-10 sm:pb-14 flex flex-col items-center gap-3 transition-opacity duration-300">
+        <a href="#editorial-showcase" class="spring-interactive group ios-glass-light px-7 py-3.5 rounded-full border border-white/70 shadow-[0_20px_50px_rgba(0,0,0,0.25)] backdrop-blur-2xl flex items-center gap-3 text-[#14161B] hover:scale-105 transition-all duration-300">
+          <span class="w-6 h-6 rounded-full bg-[#14161B] text-white flex items-center justify-center text-xs group-hover:translate-x-0.5 transition-transform">
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </span>
+          <span class="font-display tracking-[0.16em] uppercase font-bold text-xs">Find Your Luxury</span>
+        </a>
+        <span class="text-[9.5px] font-mono-tech uppercase tracking-[0.3em] text-white/90 drop-shadow flex items-center gap-1.5">
+          <span>Scroll to Reveal</span>
+          <i data-lucide="chevron-down" class="w-3.5 h-3.5 animate-bounce text-sky-400"></i>
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       EDITORIAL SHOWCASE BENTO GRID (Directly from User Reference Image 1)
+       Card 1: "Represent the extraordinary" (Editorial Aerial Image + Statement)
+       Card 2: "FIRST FLOOR PLAN" (Interactive CAD Architectural Blueprint with Room Inspector)
+       Card 3: "East End Manor" (Property Specs + $5.3M Price Tag)
+       Card 4: "Cadastral GPS Coordinates Map" (Interactive Pin Locations)
+       ========================================================================= -->
+  <section id="editorial-showcase" class="py-20 lg:py-28 px-6 lg:px-12 bg-[#FAF8F5] border-b border-[#EAE4D9]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Micro-Header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12 pb-6 border-b border-[#EAE4D9] gap-4">
+        <div>
+          <span class="text-[10px] font-sans uppercase tracking-[0.25em] text-[#0284C7] font-semibold block mb-1">
+            Curated Architectural Portfolio
+          </span>
+          <h2 class="font-sans text-3xl sm:text-4xl lg:text-5xl text-[#14161B] tracking-tight font-normal">
+            Private <span class="text-slate-400 font-light">Reserves & Manors</span>
+          </h2>
+        </div>
+        <div class="text-xs font-sans tracking-wider text-[#7E8492] uppercase">
+          CADASTRAL SEC-A • VAASTU COMPLIANT ENCLAVES
+        </div>
+      </div>
+
+      <!-- 4-Card Bento Grid Matching User Image 1 -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        
+        <!-- CARD 1: "Represent the extraordinary" (from Image 1 Top Left) -->
+        <div class="card-editorial-light p-8 lg:p-10 flex flex-col justify-between">
+          <div>
+            <h3 class="font-sans text-3xl sm:text-4xl tracking-tight font-normal mb-6 text-[#14161B]">
+              Represent the <span class="text-slate-400 font-light">extraordinary</span>
+            </h3>
+            
+            <div class="rounded-2xl overflow-hidden mb-6 border border-[#EAE4D9] shadow-inner aspect-[16/9]">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="Aerial Drone View of Luxury Villa Enclave" class="w-full h-full object-cover object-center hover:scale-105 transition duration-700" />
+            </div>
+
+            <p class="text-sm text-[#484C55] leading-relaxed mb-6 font-light">
+              At <strong class="text-[#14161B] font-semibold">SAKETHA EARTH</strong>, we believe true luxury is an uncompromising standard of architectural precision. Our network connects discerning families with master-planned private land reserves, unencumbered titles, and bespoke living environments tailored for generational legacy.
+            </p>
+          </div>
+
+          <div class="pt-4 border-t border-[#EAE4D9]">
+            <a href="#contact" class="inline-flex items-center gap-2 font-sans text-xs font-semibold text-[#14161B] hover:text-[#0284C7] uppercase tracking-wider transition group">
+              <span>Meet our advisors</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CARD 2: "FIRST FLOOR PLAN" Architectural CAD Blueprint (from Image 1 Top Right) -->
+        <div class="card-editorial-light p-8 lg:p-10 flex flex-col justify-between">
+          <div>
+            <!-- Blueprint Header from Image 1 -->
+            <div class="flex items-center justify-between pb-4 border-b border-[#EAE4D9] mb-5">
+              <span class="font-serif-luxury text-sm uppercase tracking-[0.25em] text-[#14161B] font-bold">
+                First Floor Plan
+              </span>
+              <div class="flex items-center gap-2">
+                <button onclick="switchFloor('ground')" class="w-7 h-7 rounded-full border border-[#D7C9B2] flex items-center justify-center text-[#14161B] hover:bg-[#14161B] hover:text-white transition text-xs font-bold">
+                  ‹
+                </button>
+                <button onclick="switchFloor('upper')" class="w-7 h-7 rounded-full border border-[#D7C9B2] flex items-center justify-center text-[#14161B] hover:bg-[#14161B] hover:text-white transition text-xs font-bold">
+                  ›
+                </button>
+              </div>
+            </div>
+
+            <!-- Architectural Blueprint SVG with Animate UI Interactive Room Hotspots -->
+            <div class="relative bg-[#FCFAF7] border border-[#EAE4D9] rounded-2xl p-4 sm:p-5 shadow-inner">
+              <svg class="w-full h-64 sm:h-72" viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Background Grid -->
+                <defs>
+                  <pattern id="cadGrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#EAE4D9" stroke-width="0.5"/>
+                  </pattern>
+                </defs>
+                <rect width="600" height="360" fill="url(#cadGrid)" />
+
+                <!-- 3-Car Garage -->
+                <rect x="30" y="160" width="130" height="150" class="cad-room-hotspot" fill="#FFFFFF" stroke="#14161B" stroke-width="1.5" onclick="inspectRoom('3-Car Garage', '720 SQ.FT • SUBTERRANEAN EV CHARGING & TOOL BAY')" />
+                <text x="95" y="240" font-family="'Inter', -apple-system, sans-serif" font-size="8.5" fill="#14161B" text-anchor="middle" font-weight="600" letter-spacing="0.05em">3-CAR GARAGE</text>
+                <line x1="45" y1="200" x2="145" y2="200" stroke="#7E8492" stroke-dasharray="3 3"/>
+                <line x1="45" y1="270" x2="145" y2="270" stroke="#7E8492" stroke-dasharray="3 3"/>
+
+                <!-- Kitchen & Dining -->
+                <rect x="175" y="40" width="160" height="130" class="cad-room-hotspot" fill="#FFFFFF" stroke="#14161B" stroke-width="1.5" onclick="inspectRoom('Chef Kitchen & Dining', '540 SQ.FT • MARBLE ISLAND, PANTRY & WINE ROOM')" />
+                <text x="255" y="105" font-family="'Inter', -apple-system, sans-serif" font-size="8.5" fill="#14161B" text-anchor="middle" font-weight="600" letter-spacing="0.05em">KITCHEN & DINING</text>
+
+                <!-- Great Room -->
+                <rect x="350" y="40" width="180" height="170" class="cad-room-hotspot" fill="#FFFFFF" stroke="#14161B" stroke-width="1.5" onclick="inspectRoom('Great Room', '860 SQ.FT • DOUBLE-HEIGHT CEILINGS & FIREPLACE')" />
+                <text x="440" y="125" font-family="'Inter', -apple-system, sans-serif" font-size="8.5" fill="#14161B" text-anchor="middle" font-weight="600" letter-spacing="0.05em">GREAT ROOM</text>
+
+                <!-- Primary Suite -->
+                <rect x="350" y="225" width="180" height="100" class="cad-room-hotspot" fill="#FFFFFF" stroke="#14161B" stroke-width="1.5" onclick="inspectRoom('Primary Suite', '620 SQ.FT • PRIVATE VERANDAH, SPA BATH & DRESSING')" />
+                <text x="440" y="280" font-family="'Inter', -apple-system, sans-serif" font-size="8.5" fill="#14161B" text-anchor="middle" font-weight="600" letter-spacing="0.05em">PRIMARY SUITE</text>
+
+                <!-- Foyer & Gallery -->
+                <rect x="175" y="185" width="160" height="125" class="cad-room-hotspot" fill="#FFFFFF" stroke="#14161B" stroke-width="1.5" onclick="inspectRoom('Grand Foyer & Gallery', '380 SQ.FT • SKYLIGHT ATRIUM & POWDER ROOM')" />
+                <text x="255" y="250" font-family="'Inter', -apple-system, sans-serif" font-size="8.5" fill="#14161B" text-anchor="middle" font-weight="600" letter-spacing="0.05em">FOYER & GALLERY</text>
+
+                <!-- Covered Terrace -->
+                <rect x="30" y="40" width="130" height="105" class="cad-room-hotspot" fill="#FFFFFF" stroke="#14161B" stroke-width="1.5" onclick="inspectRoom('Covered Terrace', '450 SQ.FT • OUTDOOR LOUNGE & REFLECTING POOL')" />
+                <text x="95" y="95" font-family="'Inter', -apple-system, sans-serif" font-size="8.5" fill="#14161B" text-anchor="middle" font-weight="600" letter-spacing="0.05em">COVERED TERRACE</text>
+              </svg>
+
+              <!-- Animate UI Dynamic Spring Room Inspector Bar -->
+              <div id="cad-room-info" class="mt-3 p-3 rounded-xl bg-white border border-[#EAE4D9] flex items-center justify-between text-xs font-sans shadow-sm">
+                <span class="text-[#14161B] font-semibold" id="cad-room-name">PRIMARY SUITE</span>
+                <span class="text-[#7E8492] text-[11px]" id="cad-room-specs">620 SQ.FT • PRIVATE VERANDAH, SPA BATH & DRESSING</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center justify-between text-[11px] text-[#7E8492] font-sans border-t border-[#EAE4D9]">
+            <span>MODEL: VILLA TYPE D (6,200 SQ.FT)</span>
+            <span class="text-slate-500 font-medium">SCALE 1:100 CAD</span>
+          </div>
+        </div>
+
+        <!-- CARD 3: "East End Manor" Property Card (from Image 1 Bottom Left) -->
+        <div class="card-editorial-light p-8 lg:p-10 flex flex-col justify-between">
+          <div>
+            <div class="rounded-2xl overflow-hidden mb-6 border border-[#EAE4D9] shadow-inner aspect-[16/10]">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="East End Manor Luxury Facade" class="w-full h-full object-cover object-center hover:scale-105 transition duration-700" />
+            </div>
+
+            <span class="text-xs font-sans text-[#7E8492] uppercase tracking-wider block mb-1">
+              Hamptons Sanctuary • Sector 01
+            </span>
+            <h3 class="font-sans text-2xl sm:text-3xl font-semibold text-[#14161B] mb-2">
+              East End Manor
+            </h3>
+            <p class="text-xs font-sans text-[#7E8492] mb-6">
+              4 bd • 4 ba • 480 m² (5,160 Sq.Ft) • East-Facing Surya Mandalam
+            </p>
+          </div>
+
+          <div class="flex items-center justify-between pt-4 border-t border-[#EAE4D9]">
+            <span class="font-sans text-3xl font-bold text-[#14161B] tracking-tight">
+              $5.3M <span class="text-xs font-sans text-[#7E8492] font-normal">(₹4.2 Cr)</span>
+            </span>
+            <button onclick="openBrochureModal('East End Manor')" class="inline-flex items-center gap-1.5 font-sans text-xs font-semibold text-[#14161B] hover:text-[#0284C7] uppercase tracking-wider transition group">
+              <span>View details</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 4: Interactive Cadastral GPS Locator Map (from Image 1 Bottom Right) -->
+        <div class="card-editorial-light p-8 lg:p-10 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-4 border-b border-[#EAE4D9] mb-4">
+              <span class="font-sans text-xs uppercase tracking-[0.2em] text-[#14161B] font-semibold">
+                Cadastral Coordinates Map
+              </span>
+              <span class="text-[10px] font-sans px-2.5 py-0.5 rounded-full bg-[#3E7C65]/10 text-[#3E7C65] font-semibold border border-[#3E7C65]/20">
+                Northwest Harbor
+              </span>
+            </div>
+
+            <!-- Stylized Light Vector Blueprint Map SVG -->
+            <div class="relative bg-[#F4F1EA] border border-[#EAE4D9] rounded-2xl overflow-hidden h-64 sm:h-72">
+              <svg class="w-full h-full" viewBox="0 0 600 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Water Body / Northwest Harbor -->
+                <path d="M 450 0 C 480 80, 520 120, 500 200 C 480 270, 540 320, 600 360 L 600 0 Z" fill="#DCEBF4" stroke="#8CAEC4" stroke-width="1.5" />
+                <text x="530" y="80" font-family="'Inter', -apple-system, sans-serif" font-size="10" fill="#6B91AB" font-weight="600" letter-spacing="0.06em">NORTHWEST</text>
+                <text x="530" y="95" font-family="'Inter', -apple-system, sans-serif" font-size="10" fill="#6B91AB" font-weight="600" letter-spacing="0.06em">HARBOR</text>
+
+                <!-- Road Network -->
+                <path d="M 0 100 Q 200 120, 400 90 T 600 130" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round"/>
+                <path d="M 0 100 Q 200 120, 400 90 T 600 130" stroke="#D7C9B2" stroke-width="2"/>
+                <text x="180" y="135" font-family="'Inter', -apple-system, sans-serif" font-size="8" fill="#7E8492" font-weight="500" letter-spacing="0.04em">ATLANTIC BOULEVARD</text>
+
+                <path d="M 280 95 Q 320 220, 240 360" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+                <path d="M 280 95 Q 320 220, 240 360" stroke="#D7C9B2" stroke-width="1.5"/>
+                <text x="290" y="240" font-family="'Inter', -apple-system, sans-serif" font-size="8" fill="#7E8492" font-weight="500" letter-spacing="0.04em" transform="rotate(70 290 240)">OLD NW ROAD</text>
+
+                <path d="M 80 105 Q 120 250, 40 360" stroke="#FFFFFF" stroke-width="6"/>
+                <path d="M 80 105 Q 120 250, 40 360" stroke="#D7C9B2" stroke-width="1.2"/>
+
+                <!-- Interactive Pin 1: Northwest Harbor Waterfront Retreat -->
+                <g class="cursor-pointer group" onclick="selectMapPin('$3.5M', 'Northwest Waterfront', '350 Sq.Yd Lakefront')">
+                  <circle cx="430" cy="110" r="14" fill="rgba(2,132,199,0.2)" class="animate-ping"/>
+                  <rect x="400" y="95" width="60" height="24" rx="12" fill="#14161B" stroke="#38BDF8" stroke-width="1.2"/>
+                  <text x="430" y="111" font-family="'Inter', -apple-system, sans-serif" font-size="10" fill="#FAF8F5" font-weight="600" text-anchor="middle">$3.5M</text>
+                </g>
+
+                <!-- Interactive Pin 2: East End Manor -->
+                <g class="cursor-pointer group" onclick="selectMapPin('$5.3M', 'East End Manor', '480 m² Luxury Manor')">
+                  <circle cx="260" cy="280" r="14" fill="rgba(2,132,199,0.25)" class="animate-ping"/>
+                  <rect x="230" y="265" width="60" height="24" rx="12" fill="#14161B" stroke="#38BDF8" stroke-width="1.5"/>
+                  <text x="260" y="281" font-family="'Inter', -apple-system, sans-serif" font-size="10" fill="#FAF8F5" font-weight="600" text-anchor="middle">$5.3M</text>
+                </g>
+
+                <!-- Interactive Pin 3: The Crest Sanctuary -->
+                <g class="cursor-pointer group" onclick="selectMapPin('$7.2M', 'The Crest Sanctuary', '650 Sq.Yd Sky Villa')">
+                  <circle cx="120" cy="160" r="14" fill="rgba(2,132,199,0.2)" class="animate-ping"/>
+                  <rect x="90" y="145" width="60" height="24" rx="12" fill="#14161B" stroke="#38BDF8" stroke-width="1.2"/>
+                  <text x="120" y="161" font-family="'Inter', -apple-system, sans-serif" font-size="10" fill="#FAF8F5" font-weight="600" text-anchor="middle">$7.2M</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center justify-between text-xs text-[#7E8492] font-sans border-t border-[#EAE4D9]">
+            <span id="map-pin-status">SELECTED: EAST END MANOR ($5.3M)</span>
+            <span class="text-[#3E7C65] font-semibold">● 100% DTCP VERIFIED</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SMOOTH SCROLL HERO: Hover.dev Architecture × iOS Minimal Luxury
+       Expanding Parallax Window • Dynamic Clip-Path • Private Allocation Schedule
+       ========================================================================= -->
+  <section id="smooth-scroll-hero" class="relative w-full h-[250vh] bg-[#07090e] border-b border-white/10" style="position: relative; height: 250vh;">
+    
+    <!-- Pinned Sticky 100vh Viewport -->
+    <div class="ssh-sticky-viewport sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center items-center" style="position: -webkit-sticky; position: sticky; top: 0; height: 100vh; height: 100dvh;">
+      
+      <!-- 1. The Expanding Architectural Window (Hover.dev Signature Smooth Scroll Frame) -->
+      <div id="ssh-frame" class="absolute inset-0 w-full h-full z-0 overflow-hidden pointer-events-none transition-none will-change-transform" style="clip-path: inset(12% 14% 12% 14% round 32px); -webkit-clip-path: inset(12% 14% 12% 14% round 32px); transform: scale(1.0);">
+        <!-- High-Resolution Luxury Architectural Horizon Vista -->
+        <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2400&q=90" 
+             alt="Saketha Earth Horizon Master Territory" 
+             class="w-full h-full object-cover object-center scale-105" />
+        
+        <!-- Deep Cinematic Vignette & iOS Frosted Gradients -->
+        <div class="absolute inset-0 bg-gradient-to-t from-[#07090e] via-black/40 to-black/70"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#07090e]/60 via-transparent to-[#07090e]/60"></div>
+      </div>
+
+      <!-- 2. Architectural Grid Overlay (Discreet Technical Lines) -->
+      <div class="absolute inset-0 pointer-events-none z-10 opacity-20">
+        <div class="max-w-7xl mx-auto h-full grid grid-cols-4 border-x border-white/10">
+          <div class="border-r border-white/10 h-full"></div>
+          <div class="border-r border-white/10 h-full"></div>
+          <div class="border-r border-white/10 h-full"></div>
+          <div class="h-full"></div>
+        </div>
+      </div>
+
+      <!-- 3. INITIAL PHASE (Scroll 0.0 - 0.45): Monumental Header & Floating iOS Minimal Pills -->
+      <div id="ssh-hero-content" class="relative z-20 max-w-5xl mx-auto px-6 text-center will-change-transform">
+        
+        <!-- Top Pill Badge -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full ios-glass-pill border border-sky-400/40 text-[11px] font-sans font-semibold tracking-[0.22em] text-sky-300 uppercase shadow-2xl mb-6">
+          <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+          <span>CAPITAL ALLOCATION ROADMAP • 2026–2027</span>
+        </div>
+
+        <!-- Monumental Architectural Title -->
+        <h2 class="font-sans text-5xl sm:text-7xl md:text-8xl lg:text-[96px] text-white tracking-[-0.03em] leading-[1.0] select-none uppercase font-bold mb-6">
+          The Unfolding <span class="shiny-text">Horizon</span>
+        </h2>
+
+        <p class="text-sm sm:text-base text-gray-200 max-w-2xl mx-auto font-normal leading-relaxed mb-6">
+          As you scroll, the master land reserve expands from architectural blueprint into physical execution. Witness the curated sequence of private allotments.
+        </p>
+
+      </div>
+
+      <!-- 4. SECOND PHASE (Scroll 0.45 - 1.0): Interactive Land Release Schedule -->
+      <div id="ssh-schedule-content" class="absolute z-30 max-w-5xl w-full mx-auto px-6 opacity-0 pointer-events-none will-change-transform flex flex-col justify-center">
+        
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-md text-[10px] font-sans font-semibold tracking-[0.22em] text-[#0F172A] border border-white/90 shadow-sm uppercase mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+            <span>Capital Allocation Roadmap</span>
+          </div>
+          <h3 class="font-sans font-normal text-4xl sm:text-5xl lg:text-6xl text-white tracking-tight">
+            Private Land <span class="text-slate-400 font-light">Allocation Schedule</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-200 max-w-xl mx-auto font-normal mt-2">
+            Structured milestone releases for institutional and high-net-worth investors across our residential and agro-sanctuary corridors.
+          </p>
+        </div>
+
+        <!-- Timeline Cards: Translucent White Frosted Glass Architectural Rows -->
+        <div class="space-y-3.5 sm:space-y-4 font-sans text-xs">
+          
+          <!-- Milestone 01 -->
+          <div class="bg-white/90 backdrop-blur-2xl p-5 sm:p-6 rounded-2xl border border-white/90 shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_50px_rgba(2,132,199,0.14)] hover:border-sky-300 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+            <div class="flex items-start sm:items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-100 text-[#0F172A] font-bold text-center shrink-0 border border-slate-200 flex flex-col items-center justify-center">
+                <span class="text-[9px] text-slate-500 block uppercase font-sans font-semibold tracking-wider">Phase</span>
+                <span class="text-base font-bold font-sans leading-none">01</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2.5">
+                  <span class="text-[#0F172A] font-bold text-base tracking-tight">Saketha Earth Meadows (Phase I)</span>
+                  <span class="text-[10px] text-slate-500 font-sans font-medium uppercase bg-slate-100 px-2 py-0.5 rounded-md">Q1 2026</span>
+                </div>
+                <p class="text-xs text-slate-600 font-normal mt-1">
+                  45 Acres Gated Villa Sanctuaries • 40-Foot Tree-Lined Avenues & Subterranean Cabling
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between md:justify-end gap-3.5 shrink-0">
+              <span class="px-3.5 py-1.5 rounded-full text-[10.5px] uppercase font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                100% Allotted
+              </span>
+              <button onclick="openBrochureModal('Saketha Earth Meadows (Phase I)')" class="px-4 py-2 rounded-full bg-slate-100 hover:bg-[#0F172A] text-[#0F172A] hover:text-white border border-slate-200 text-xs font-medium transition flex items-center gap-1.5">
+                <span>Dossier</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Milestone 02: ACTIVE NOW -->
+          <div class="bg-white/95 backdrop-blur-2xl p-5 sm:p-6 rounded-2xl border-2 border-sky-400 shadow-[0_20px_50px_rgba(2,132,199,0.18)] transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+            <div class="flex items-start sm:items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-50 text-[#0284C7] font-bold text-center shrink-0 border border-sky-200 flex flex-col items-center justify-center">
+                <span class="text-[9px] text-sky-600 block uppercase font-sans font-semibold tracking-wider">Phase</span>
+                <span class="text-base font-bold font-sans leading-none">02</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2.5">
+                  <span class="text-[#0F172A] font-bold text-base tracking-tight">Saketha Présénte Waterfront</span>
+                  <span class="text-[10px] text-sky-700 font-sans font-semibold uppercase bg-sky-100/80 px-2 py-0.5 rounded-md animate-pulse">Active Now</span>
+                </div>
+                <p class="text-xs text-slate-600 font-normal mt-1">
+                  GIFT City Corridor • Cantilever Pools & Private Helipad • Riverfront Facing
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between md:justify-end gap-3.5 shrink-0">
+              <span class="px-3.5 py-1.5 rounded-full text-[10.5px] uppercase font-bold bg-sky-50 text-sky-700 border border-sky-300">
+                Allocation Open (32% Left)
+              </span>
+              <button onclick="openBrochureModal('Saketha Présénte Waterfront')" class="px-5 py-2.5 rounded-full bg-[#0F172A] hover:bg-[#0284C7] text-white font-semibold text-xs transition flex items-center gap-2 shadow-md">
+                <span>Acquire</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Milestone 03 -->
+          <div class="bg-white/90 backdrop-blur-2xl p-5 sm:p-6 rounded-2xl border border-white/90 shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_50px_rgba(2,132,199,0.14)] hover:border-sky-300 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+            <div class="flex items-start sm:items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-100 text-[#0F172A] font-bold text-center shrink-0 border border-slate-200 flex flex-col items-center justify-center">
+                <span class="text-[9px] text-slate-500 block uppercase font-sans font-semibold tracking-wider">Phase</span>
+                <span class="text-base font-bold font-sans leading-none">03</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2.5">
+                  <span class="text-[#0F172A] font-bold text-base tracking-tight">Saketha Farmland Sanctuary</span>
+                  <span class="text-[10px] text-slate-500 font-sans font-medium uppercase bg-slate-100 px-2 py-0.5 rounded-md">Q3 2026</span>
+                </div>
+                <p class="text-xs text-slate-600 font-normal mt-1">
+                  60 Acres Managed Sandalwood, Neem & Organic Mango Plantations • 10-Yr Stewardship
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between md:justify-end gap-3.5 shrink-0">
+              <span class="px-3.5 py-1.5 rounded-full text-[10.5px] uppercase font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                Pre-Registration
+              </span>
+              <button onclick="openBrochureModal('Saketha Farmland Sanctuary')" class="px-4 py-2 rounded-full bg-slate-100 hover:bg-[#0F172A] text-[#0F172A] hover:text-white border border-slate-200 text-xs font-medium transition flex items-center gap-1.5">
+                <span>Dossier</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Milestone 04 -->
+          <div class="bg-white/90 backdrop-blur-2xl p-5 sm:p-6 rounded-2xl border border-white/90 shadow-[0_15px_40px_rgba(0,0,0,0.12)] hover:shadow-[0_20px_50px_rgba(2,132,199,0.14)] hover:border-sky-300 transition-all duration-300 flex flex-col md:flex-row md:items-center justify-between gap-4 group">
+            <div class="flex items-start sm:items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-slate-100 text-[#0F172A] font-bold text-center shrink-0 border border-slate-200 flex flex-col items-center justify-center">
+                <span class="text-[9px] text-slate-500 block uppercase font-sans font-semibold tracking-wider">Phase</span>
+                <span class="text-base font-bold font-sans leading-none">04</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2.5">
+                  <span class="text-[#0F172A] font-bold text-base tracking-tight">The Sanctuary Club & Botanical Park</span>
+                  <span class="text-[10px] text-slate-500 font-sans font-medium uppercase bg-slate-100 px-2 py-0.5 rounded-md">Q4 2026</span>
+                </div>
+                <p class="text-xs text-slate-600 font-normal mt-1">
+                  15,000 Sq.Ft Private Members Pavilion • Half-Olympic Heated Pool • Spa & Cigar Lounge
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center justify-between md:justify-end gap-3.5 shrink-0">
+              <span class="px-3.5 py-1.5 rounded-full text-[10.5px] uppercase font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                Civil Execution
+              </span>
+              <button onclick="openBrochureModal('The Sanctuary Club')" class="px-4 py-2 rounded-full bg-slate-100 hover:bg-[#0F172A] text-[#0F172A] hover:text-white border border-slate-200 text-xs font-medium transition flex items-center gap-1.5">
+                <span>Preview</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+        </div>
+
+      </div>
+
+      <!-- 5. Bottom Scroll Prompt Pill (Discreet, Fades on Scroll, Clickable) -->
+      <div id="ssh-scroll-indicator" onclick="scrollIntoHero()" class="absolute bottom-8 z-30 cursor-pointer pointer-events-auto transition-all duration-300 hover:scale-105">
+        <div class="ios-glass-pill px-5 py-2.5 rounded-full border border-white/25 flex items-center gap-2.5 text-[10px] font-mono tracking-[0.2em] text-gray-200 uppercase shadow-2xl hover:border-sky-400/50 hover:bg-white/30 transition">
+          <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+          <span>Scroll or Click to Expand</span>
+          <i data-lucide="chevron-down" class="w-3.5 h-3.5 animate-bounce text-sky-300"></i>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FLAGSHIP ARCHITECTURAL PORTFOLIO (Curated Estate Portfolio Showcase)
+       ========================================================================= -->
+  <section id="portfolio-showcase" class="py-24 sm:py-28 px-6 lg:px-12 relative bg-[#FAF8F5] border-b border-[#EAE4D9]">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 sm:mb-16">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#EAE4D9] text-[10px] font-sans font-semibold tracking-[0.22em] text-[#0F172A] uppercase shadow-sm mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+            <span>Architectural Portfolios</span>
+          </div>
+          <h2 class="font-sans font-normal text-4xl sm:text-5xl lg:text-6xl text-[#0F172A] tracking-[-0.03em] leading-[1.08]">
+            The Master <span class="text-slate-400 font-light">Collection</span>
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 font-normal mt-3 leading-relaxed">
+            A curated portfolio of limited-edition enclaves, bespoke waterfront residences, and generational agrarian reserves engineered for permanence.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button onclick="filterPortfolio('all')" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-semibold tracking-wider bg-[#0F172A] text-white shadow-md transition-all" data-filter="all">All Enclaves</button>
+          <button onclick="filterPortfolio('waterfront')" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-medium tracking-wider bg-white text-slate-600 hover:text-[#0F172A] border border-[#EAE4D9] transition-all" data-filter="waterfront">Waterfront Villas</button>
+          <button onclick="filterPortfolio('residential')" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-medium tracking-wider bg-white text-slate-600 hover:text-[#0F172A] border border-[#EAE4D9] transition-all" data-filter="residential">Master Enclaves</button>
+          <button onclick="filterPortfolio('agro')" class="portfolio-filter-btn px-4 py-2 rounded-full text-xs font-medium tracking-wider bg-white text-slate-600 hover:text-[#0F172A] border border-[#EAE4D9] transition-all" data-filter="agro">Agro Sanctuaries</button>
+        </div>
+      </div>
+
+      <!-- Portfolio Grid: 4 World-Class Architectural Residences -->
+      <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Estate 1: Villa Présénte Waterfront -->
+        <div class="portfolio-card group bg-white rounded-3xl overflow-hidden border border-[#EAE4D9] shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(2,132,199,0.12)] hover:border-sky-200 transition-all duration-500 flex flex-col justify-between" data-category="waterfront">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80" alt="Villa Présénte Waterfront" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-sans tracking-wider text-[#0284C7] font-bold border border-white/80 shadow-sm uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+                <span>Phase 02 Active</span>
+              </div>
+              <div class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-full bg-[#0F172A]/85 backdrop-blur-md text-white font-sans text-xs font-bold">
+                From ₹8.5 Cr
+              </div>
+            </div>
+
+            <div class="p-7 sm:p-8">
+              <div class="flex items-center gap-2 text-xs font-sans text-slate-500 uppercase tracking-widest mb-2">
+                <span>GIFT City Economic Axis</span>
+                <span>•</span>
+                <span>Waterfront Facing</span>
+              </div>
+              <h3 class="font-sans font-bold text-2xl sm:text-3xl text-[#0F172A] tracking-tight mb-3">
+                Villa Présénte Waterfront
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed font-normal mb-6">
+                Cantilevered architectural glass residence featuring an infinity reflection pool, private rooftop observatory, and dedicated marine promenade access.
+              </p>
+
+              <!-- Architectural Specs Grid -->
+              <div class="grid grid-cols-3 gap-3 py-4 border-y border-slate-100 font-sans text-xs text-slate-700">
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Gross Area</span>
+                  <span class="font-bold text-[#0F172A]">5,165 SQ.FT</span>
+                </div>
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Bedrooms</span>
+                  <span class="font-bold text-[#0F172A]">5 Suites</span>
+                </div>
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Amenities</span>
+                  <span class="font-bold text-[#0284C7]">Pool & Helipad</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-7 sm:px-8 pb-7 pt-2">
+            <button onclick="openBrochureModal('Villa Présénte Waterfront')" class="w-full py-3.5 rounded-full bg-slate-100 hover:bg-[#0F172A] text-[#0F172A] hover:text-white font-semibold text-xs tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group-hover:bg-[#0F172A] group-hover:text-white">
+              <span>Inspect Architectural Dossier</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Estate 2: Saketha Earth Meadows -->
+        <div class="portfolio-card group bg-white rounded-3xl overflow-hidden border border-[#EAE4D9] shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(2,132,199,0.12)] hover:border-sky-200 transition-all duration-500 flex flex-col justify-between" data-category="residential">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Saketha Earth Meadows" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-sans tracking-wider text-emerald-700 font-bold border border-white/80 shadow-sm uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                <span>DTCP Sanctioned</span>
+              </div>
+              <div class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-full bg-[#0F172A]/85 backdrop-blur-md text-white font-sans text-xs font-bold">
+                From ₹3.2 Cr
+              </div>
+            </div>
+
+            <div class="p-7 sm:p-8">
+              <div class="flex items-center gap-2 text-xs font-sans text-slate-500 uppercase tracking-widest mb-2">
+                <span>Sector 01 Main Boulevard</span>
+                <span>•</span>
+                <span>Vaastu Sanctuary</span>
+              </div>
+              <h3 class="font-sans font-bold text-2xl sm:text-3xl text-[#0F172A] tracking-tight mb-3">
+                Saketha Earth Meadows
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed font-normal mb-6">
+                165-acre master-planned residential enclave. Features 60-foot tree-lined boulevards, 100% underground utilities, and DTCP-approved villa allotments.
+              </p>
+
+              <!-- Architectural Specs Grid -->
+              <div class="grid grid-cols-3 gap-3 py-4 border-y border-slate-100 font-sans text-xs text-slate-700">
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Parcel Sizes</span>
+                  <span class="font-bold text-[#0F172A]">250 - 800 Yds</span>
+                </div>
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Road Width</span>
+                  <span class="font-bold text-[#0F172A]">60-Ft Avenues</span>
+                </div>
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Orientation</span>
+                  <span class="font-bold text-emerald-700">100% Vaastu</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-7 sm:px-8 pb-7 pt-2">
+            <button onclick="openBrochureModal('Saketha Earth Meadows')" class="w-full py-3.5 rounded-full bg-slate-100 hover:bg-[#0F172A] text-[#0F172A] hover:text-white font-semibold text-xs tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group-hover:bg-[#0F172A] group-hover:text-white">
+              <span>Inspect Master Blueprint</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Estate 3: The East End Manor & Vineyard -->
+        <div class="portfolio-card group bg-white rounded-3xl overflow-hidden border border-[#EAE4D9] shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(2,132,199,0.12)] hover:border-sky-200 transition-all duration-500 flex flex-col justify-between" data-category="agro">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1200&q=80" alt="The Agro-Sanctuary & Botanical Orchards" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-sans tracking-wider text-emerald-800 font-bold border border-white/80 shadow-sm uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                <span>Organic Managed</span>
+              </div>
+              <div class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-full bg-[#0F172A]/85 backdrop-blur-md text-white font-sans text-xs font-bold">
+                From ₹4.8 Cr
+              </div>
+            </div>
+
+            <div class="p-7 sm:p-8">
+              <div class="flex items-center gap-2 text-xs font-sans text-slate-500 uppercase tracking-widest mb-2">
+                <span>Greenfield Agrotourism Belt</span>
+                <span>•</span>
+                <span>10-Yr Stewardship</span>
+              </div>
+              <h3 class="font-sans font-bold text-2xl sm:text-3xl text-[#0F172A] tracking-tight mb-3">
+                Agro-Sanctuary & Orchards
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed font-normal mb-6">
+                Curated 2.5-acre to 5.0-acre managed agro-estates with organic Sandalwood and Mango groves, private farm residences, and Israeli automated micro-drip grids.
+              </p>
+
+              <!-- Architectural Specs Grid -->
+              <div class="grid grid-cols-3 gap-3 py-4 border-y border-slate-100 font-sans text-xs text-slate-700">
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Land Area</span>
+                  <span class="font-bold text-[#0F172A]">2.5 - 5.0 Acres</span>
+                </div>
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Yield</span>
+                  <span class="font-bold text-[#0F172A]">Managed Agronomy</span>
+                </div>
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Security</span>
+                  <span class="font-bold text-[#0284C7]">Perimeter AI Grid</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-7 sm:px-8 pb-7 pt-2">
+            <button onclick="openBrochureModal('Agro-Sanctuary & Orchards')" class="w-full py-3.5 rounded-full bg-slate-100 hover:bg-[#0F172A] text-[#0F172A] hover:text-white font-semibold text-xs tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group-hover:bg-[#0F172A] group-hover:text-white">
+              <span>Inspect Agro Prospectus</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Estate 4: The Sanctuary Club & Pavilion -->
+        <div class="portfolio-card group bg-white rounded-3xl overflow-hidden border border-[#EAE4D9] shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(2,132,199,0.12)] hover:border-sky-200 transition-all duration-500 flex flex-col justify-between" data-category="waterfront">
+          <div>
+            <div class="relative aspect-[16/10] overflow-hidden bg-slate-100">
+              <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80" alt="The Sanctuary Club Pavilion" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700" />
+              <div class="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-sans tracking-wider text-indigo-700 font-bold border border-white/80 shadow-sm uppercase">
+                <span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                <span>Civil Execution</span>
+              </div>
+              <div class="absolute bottom-4 right-4 px-3.5 py-1.5 rounded-full bg-[#0F172A]/85 backdrop-blur-md text-white font-sans text-xs font-bold">
+                Members Only
+              </div>
+            </div>
+
+            <div class="p-7 sm:p-8">
+              <div class="flex items-center gap-2 text-xs font-sans text-slate-500 uppercase tracking-widest mb-2">
+                <span>Central Enclave Boulevard</span>
+                <span>•</span>
+                <span>Private Retreat</span>
+              </div>
+              <h3 class="font-sans font-bold text-2xl sm:text-3xl text-[#0F172A] tracking-tight mb-3">
+                The Sanctuary Club & Pavilion
+              </h3>
+              <p class="text-sm text-slate-600 leading-relaxed font-normal mb-6">
+                15,000 Sq.Ft private members pavilion featuring an indoor heated lap pool, Swedish hydrotherapy spa, private cigar lounge, and executive squash courts.
+              </p>
+
+              <!-- Architectural Specs Grid -->
+              <div class="grid grid-cols-3 gap-3 py-4 border-y border-slate-100 font-sans text-xs text-slate-700">
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Pavilion Scale</span>
+                  <span class="font-bold text-[#0F172A]">15,000 SQ.FT</span>
+                </div>
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Pool System</span>
+                  <span class="font-bold text-[#0F172A]">Half-Olympic</span>
+                </div>
+                <div>
+                  <span class="block text-[9.5px] uppercase text-slate-500 font-medium">Access</span>
+                  <span class="font-bold text-[#0284C7]">Allotment Exclusive</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-7 sm:px-8 pb-7 pt-2">
+            <button onclick="openBrochureModal('The Sanctuary Club & Pavilion')" class="w-full py-3.5 rounded-full bg-slate-100 hover:bg-[#0F172A] text-[#0F172A] hover:text-white font-semibold text-xs tracking-wider transition-all duration-300 flex items-center justify-center gap-2 group-hover:bg-[#0F172A] group-hover:text-white">
+              <span>View Club Facilities</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       VIP CHAUFFEUR SITE VISIT ENGINE
+       ========================================================================= -->
+  <section id="site-visit" class="py-24 sm:py-28 px-6 lg:px-12 relative bg-gradient-to-b from-[#090E17] via-[#0C192E] to-[#0F2642]">
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-[10px] font-sans font-semibold tracking-[0.22em] text-sky-400 border border-white/15 uppercase">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+            <span>Private Concierge Service</span>
+          </div>
+          <h2 class="font-sans font-bold text-4xl sm:text-5xl lg:text-6xl text-white tracking-[-0.03em] leading-[1.08]">
+            Experience The Land. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-200 to-white">Chauffeur Viewing</span>.
+          </h2>
+          <p class="text-sm text-slate-300 font-normal leading-relaxed">
+            Stand upon the land, examine the 40-foot avenue roadways, and inspect original 30-year link titles in person. We arrange complimentary luxury chauffeur service directly from your residence or the airport.
+          </p>
+
+          <div class="space-y-3 font-sans text-xs text-slate-300 pt-2">
+            <div class="flex items-center gap-3">
+              <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+              <span>Luxury AC SUV Doorstep Pickup & Return</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+              <span>Original Sanctioned Blueprints & Link Document Review</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+              <span>Accompanied by Senior Land Portfolio Director</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-slate-900/80 backdrop-blur-2xl p-8 sm:p-12 rounded-3xl border border-white/15 shadow-2xl">
+          <h4 class="font-sans text-2xl font-bold text-white mb-1">Schedule VIP Viewing</h4>
+          <p class="text-xs font-sans text-slate-400 uppercase tracking-wider mb-6">Select preferred date & pickup location</p>
+
+          <form id="site-visit-form" onsubmit="handleSiteVisitSubmit(event)" class="space-y-4 font-sans text-xs">
+            <div>
+              <label class="block text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-semibold">Full Name</label>
+              <input type="text" required placeholder="e.g. Rajiv Chandrasekhar" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder:text-slate-500 focus:border-sky-400 outline-none transition">
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-semibold">Phone Number (WhatsApp)</label>
+                <input type="tel" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder:text-slate-500 focus:border-sky-400 outline-none transition">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-semibold">Estate of Interest</label>
+                <select class="w-full px-4 py-3 rounded-xl bg-[#0F172A] border border-white/15 text-xs text-white focus:border-sky-400 outline-none transition">
+                  <option>Villa Présénte (GIFT City)</option>
+                  <option>Saketha Earth Meadows (Villa Plots)</option>
+                  <option>Agro-Sanctuary (Managed Farm)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-semibold">Preferred Date</label>
+                <input type="date" required class="w-full px-4 py-3 rounded-xl bg-[#0F172A] border border-white/15 text-xs text-white focus:border-sky-400 outline-none transition">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-widest text-slate-400 mb-1 font-semibold">Pickup Location</label>
+                <input type="text" required placeholder="Residence / Airport Terminal" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/15 text-xs text-white placeholder:text-slate-500 focus:border-sky-400 outline-none transition">
+              </div>
+            </div>
+
+            <button type="submit" class="spring-interactive w-full py-4 rounded-full bg-[#0284C7] hover:bg-sky-500 text-white font-semibold text-xs uppercase tracking-widest transition shadow-xl mt-4">
+              Confirm Chauffeur Reservation
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       CONTACT SECTION: Vanta.js Clouds Background (Daytime White/Cyan) + Frosted Glass Form
+       ========================================================================= -->
+  <section id="contact" class="py-28 px-6 lg:px-12 relative overflow-hidden bg-[#68b8d7]">
+    
+    <!-- 1. Vanta.js 3D Animated Clouds Background (backgroundColor: 0xffffff, skyColor: 0x68b8d7, cloudColor: 0xadc1de) -->
+    <div id="vanta-clouds-contact" class="absolute inset-0 z-0"></div>
+
+    <!-- 2. Atmospheric Color Tint Blend (Top Transition from Midnight Chauffeur to Daytime Sky) -->
+    <div class="absolute top-0 left-0 right-0 h-44 sm:h-64 pointer-events-none z-[1] bg-gradient-to-b from-[#0F2642] via-[#12365A]/85 via-[#235F8A]/50 via-[#4A99C2]/20 to-transparent"></div>
+
+    <!-- 3. Bottom Atmospheric Blend into Dark Footer -->
+    <div class="absolute bottom-0 left-0 right-0 h-28 sm:h-40 pointer-events-none z-[1] bg-gradient-to-t from-[#060709] via-[#060709]/80 via-[#0e2236]/30 to-transparent"></div>
+
+    <!-- 4. Clean Ambient Overlay: Transparent so bright sky and white clouds shine through -->
+    <div class="absolute inset-0 bg-white/5 backdrop-blur-[0.5px] pointer-events-none z-[1]"></div>
+
+    <!-- 3. Content Container -->
+    <div class="max-w-7xl mx-auto relative z-10">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column: Corporate Headquarters & Direct Concierge -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-[10px] font-sans font-medium tracking-[0.2em] text-slate-600 border border-white shadow-sm uppercase">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+            <span>Corporate headquarters</span>
+          </div>
+
+          <h2 class="font-sans text-4xl sm:text-5xl lg:text-[54px] text-[#0F172A] tracking-tight leading-[1.1] font-normal">
+            Private <span class="text-slate-400 font-light">Inquiries</span>
+          </h2>
+          <p class="text-sm text-slate-600 leading-relaxed font-normal max-w-md">
+            Private consultations with our Managing Partners are arranged by prior appointment at our corporate offices.
+          </p>
+
+          <div class="space-y-3 pt-3 font-sans">
+            <div class="p-5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white shadow-[0_8px_24px_rgba(2,132,199,0.06)] hover:bg-white transition-all duration-300">
+              <span class="text-xs text-slate-400 block mb-1 font-normal">Corporate headquarters</span>
+              <p class="text-[#0F172A] text-sm font-normal leading-relaxed">Saketha Earth Corporate Towers, SG Highway & GIFT City Corridor, India</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white shadow-[0_8px_24px_rgba(2,132,199,0.06)] hover:bg-white transition-all duration-300">
+              <span class="text-xs text-slate-400 block mb-1 font-normal">Direct concierge line</span>
+              <p class="text-[#0284C7] text-sm font-medium tracking-wide">+91 98765 43210 &nbsp;•&nbsp; +91 98765 43211</p>
+            </div>
+            <div class="p-5 rounded-2xl bg-white/90 backdrop-blur-xl border border-white shadow-[0_8px_24px_rgba(2,132,199,0.06)] hover:bg-white transition-all duration-300">
+              <span class="text-xs text-slate-400 block mb-1 font-normal">Electronic dispatch</span>
+              <p class="text-[#0F172A] text-sm font-normal">investments@sakethaearth.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Translucent Frosted Glass Luxury Inquiry Form -->
+        <div class="lg:col-span-7 bg-white/90 backdrop-blur-2xl p-8 sm:p-12 rounded-3xl border border-white shadow-[0_25px_60px_rgba(15,23,42,0.08)]">
+          <h3 class="font-sans text-2xl sm:text-3xl text-[#0F172A] tracking-tight font-normal mb-1.5">
+            Send an <span class="text-slate-400 font-light">Official Inquiry</span>
+          </h3>
+          <p class="text-xs text-slate-500 mb-6 font-normal">Confidential advisory for institutional portfolios & private landholdings.</p>
+
+          <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4 font-sans">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-normal text-slate-500 mb-1.5">Your name</label>
+                <input type="text" required placeholder="John Doe" class="w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-slate-200 text-sm font-normal text-[#0F172A] placeholder:text-slate-400 focus:bg-white focus:border-[#0284C7] focus:ring-4 focus:ring-[#0284C7]/10 outline-none transition-all">
+              </div>
+              <div>
+                <label class="block text-xs font-normal text-slate-500 mb-1.5">Phone number</label>
+                <input type="tel" required placeholder="+91 98765 43210" class="w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-slate-200 text-sm font-normal text-[#0F172A] placeholder:text-slate-400 focus:bg-white focus:border-[#0284C7] focus:ring-4 focus:ring-[#0284C7]/10 outline-none transition-all">
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-normal text-slate-500 mb-1.5">Inquiry / requirements</label>
+              <textarea rows="4" placeholder="Desired parcel sizes, investment timeline, or specific project inquiries..." class="w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-slate-200 text-sm font-normal text-[#0F172A] placeholder:text-slate-400 focus:bg-white focus:border-[#0284C7] focus:ring-4 focus:ring-[#0284C7]/10 outline-none transition-all resize-none"></textarea>
+            </div>
+            <button type="submit" class="spring-interactive w-full py-4 rounded-full bg-[#0F172A] hover:bg-[#0284C7] text-white text-xs font-sans font-medium tracking-[0.16em] uppercase shadow-xl hover:shadow-[0_12px_30px_rgba(2,132,199,0.3)] hover:scale-[1.01] active:scale-[0.99] transition duration-300 mt-2">
+              Transmit Official Inquiry
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="bg-[#060709] text-white py-16 px-6 lg:px-12 text-xs font-sans border-t border-white/10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8 border-b border-white/10 pb-12">
+      <div>
+        <span class="font-sans text-xl font-medium uppercase block tracking-wider">Saketha Earth</span>
+        <span class="text-[9px] text-gray-400 tracking-[0.3em] uppercase block mt-1">Estates & Landholdings • LLPIN: AAR-1409 • RERA: P02400004921</span>
+      </div>
+
+      <div class="flex flex-wrap gap-8 text-[11px] uppercase tracking-widest text-gray-400 font-sans">
+        <a href="#hero-3d-scene" class="hover:text-white transition">Top</a>
+        <a href="#editorial-showcase" class="hover:text-white transition">Showcase</a>
+        <a href="#smooth-scroll-hero" class="hover:text-white transition">Roadmap</a>
+        <a href="#portfolio-showcase" class="hover:text-white transition">Portfolios</a>
+        <a href="#contact" class="hover:text-white transition">Inquire</a>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 pt-8 text-[10px] text-gray-500 uppercase tracking-widest font-sans">
+      <p>© 2026 Saketha Earth LLP. All rights reserved.</p>
+      <p>Architectural Renders for Illustration. Sanctioned Plans Prevail.</p>
+    </div>
+  </footer>
+
+  <!-- Global Toast Notification -->
+  <div id="toast" class="fixed bottom-6 left-6 z-50 transform -translate-y-4 opacity-0 pointer-events-none transition-all duration-300 ios-glass-dark text-white px-6 py-4 rounded-2xl border border-sky-400/40 text-xs font-sans tracking-wide flex items-center gap-3 shadow-2xl">
+    <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+    <div>
+      <p class="font-medium uppercase text-white" id="toast-title">Notification</p>
+      <p class="text-gray-300 text-[11px] font-sans" id="toast-message">Your request has been received.</p>
+    </div>
+  </div>
+
+  <!-- Brochure Modal -->
+  <div id="brochure-modal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="ios-glass-dark rounded-3xl border border-white/20 max-w-md w-full p-8 relative shadow-2xl">
+      <button onclick="closeBrochureModal()" class="absolute top-5 right-5 text-gray-400 hover:text-white font-sans text-xs">
+        ✕
+      </button>
+
+      <div class="mb-6">
+        <span class="font-sans text-[10px] text-sky-400 uppercase tracking-widest">Document Delivery</span>
+        <h3 class="font-sans text-2xl font-normal text-white mt-1" id="modal-brochure-title">Download <span class="text-slate-400 font-light">Dossier</span></h3>
+        <p class="text-xs text-gray-300 mt-2 font-sans font-light">Receive high-resolution architectural CAD blueprints and certified disclosures.</p>
+      </div>
+
+      <form id="modal-brochure-form" onsubmit="handleBrochureSubmit(event)" class="space-y-4 font-sans text-xs">
+        <div>
+          <label class="block text-[11px] text-gray-300 mb-1 font-normal">Full name</label>
+          <input type="text" required placeholder="Sanjay Reddy" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white focus:border-sky-400 outline-none">
+        </div>
+        <div>
+          <label class="block text-[11px] text-gray-300 mb-1 font-normal">WhatsApp phone number</label>
+          <input type="tel" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white focus:border-sky-400 outline-none">
+        </div>
+        <div>
+          <label class="block text-[11px] text-gray-300 mb-1 font-normal">Email</label>
+          <input type="email" required placeholder="sanjay@example.com" class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white focus:border-sky-400 outline-none">
+        </div>
+        <button type="submit" class="w-full py-4 rounded-full bg-[#0284C7] hover:bg-sky-500 font-sans font-medium text-xs uppercase tracking-widest text-white transition duration-300 shadow-xl">
+          Transmit Dossier
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Project Details Modal -->
+  <div id="project-detail-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 overflow-y-auto">
+    <div class="ios-glass-dark rounded-3xl border border-white/20 max-w-3xl w-full p-8 relative my-8 shadow-2xl">
+      <button onclick="closeProjectDetail()" class="absolute top-6 right-6 text-gray-400 hover:text-white font-sans text-xs">
+        ✕ Close
+      </button>
+
+      <div id="modal-project-content" class="space-y-6 font-sans">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Controller -->
+  <script src="app.js"></script>
+</body>
+</html>
