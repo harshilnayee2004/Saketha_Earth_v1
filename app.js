@@ -994,10 +994,10 @@ function init3DHeroParallax() {
 
     const isMobile = window.innerWidth < 640;
     // Initial state: shifted behind building, emerges into open sky
-    const startX = isMobile ? 18 : 75;
-    const endX = isMobile ? -10 : -20;
-    const startY = isMobile ? 15 : 30;
-    const endY = isMobile ? -22 : -70;
+    const startX = isMobile ? 38 : 75;
+    const endX = isMobile ? -14 : -20;
+    const startY = isMobile ? 55 : 30;
+    const endY = isMobile ? -30 : -70;
 
     const currentX = (startX * (1 - easeOut)) + (endX * easeOut) + (-mouseX * (isMobile ? 5 : 14));
     const currentY = (startY * (1 - easeOut)) + (endY * easeOut) + (-mouseY * (isMobile ? 4 : 8));
