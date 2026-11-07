@@ -49,6 +49,7 @@ let currentModelIndex = 0;
 
 function updateModelDisplay() {
   const model = ARCH_MODELS[currentModelIndex];
+  if (!document.getElementById("model-name-display")) return;
   document.getElementById("model-name-display").textContent = model.name;
   document.getElementById("model-area-display").innerHTML = `${model.area} <span class="text-xs font-mono-tech text-amber-300 font-normal">${model.areaFt}</span>`;
   document.getElementById("wireframe-svg").innerHTML = model.svg;
@@ -598,6 +599,7 @@ function filterProjects(category) {
 
 // 8. Financial Modeling Yield Studio (ROI Calculator)
 function calculateROI() {
+  if (!document.getElementById("calc-size")) return;
   const size = parseInt(document.getElementById("calc-size").value) || 250;
   const rate = parseInt(document.getElementById("calc-rate").value) || 22000;
   const years = parseInt(document.getElementById("calc-years").value) || 5;
@@ -895,7 +897,97 @@ function scrollIntoHero() {
   }
 }
 
-// 11. Initialization on Load
+// 11. Intro curtain: lift once assets are ready (bounded so slow networks never block the page)
+let introStartTime = null;
+const INTRO_MIN_MS = 1100;
+const INTRO_MAX_MS = 2600;
+const pageOpenedAt = performance.now();
+
+function revealPage() {
+  if (document.body.classList.contains("is-loaded")) return;
+  document.body.classList.add("is-loaded");
+  introStartTime = performance.now();
+}
+
+window.addEventListener("load", () => {
+  const elapsed = performance.now() - pageOpenedAt;
+  setTimeout(revealPage, Math.max(0, INTRO_MIN_MS - elapsed));
+});
+setTimeout(revealPage, INTRO_MAX_MS);
+
+// Header: transparent over the hero, frosted ivory after, tucks away while scrolling down
+function initHeaderState() {
+  const header = document.getElementById("main-nav-header");
+  if (!header) return;
+  let lastY = window.scrollY;
+
+  function update() {
+    const y = window.scrollY;
+    const hero = document.getElementById("hero-3d-scene");
+    const threshold = hero ? Math.max(60, hero.offsetHeight - window.innerHeight - 20) : 60;
+    header.classList.toggle("is-scrolled", y > threshold);
+
+    const goingDown = y > lastY + 4;
+    const goingUp = y < lastY - 4;
+    if (!document.body.classList.contains("menu-open")) {
+      if (goingDown && y > threshold + 200) header.classList.add("is-hidden");
+      else if (goingUp || y <= threshold) header.classList.remove("is-hidden");
+    }
+    if (goingDown || goingUp) lastY = y;
+  }
+
+  window.addEventListener("scroll", update, { passive: true });
+  update();
+}
+
+// Scroll reveal: fades content up as it enters the viewport, staggered within each group
+function initScrollReveal() {
+  const groups = [
+    "#editorial-showcase .max-w-7xl > div:first-child",
+    "#editorial-showcase .card-editorial-light",
+    "#portfolio-showcase .max-w-7xl > div:first-child",
+    "#portfolio-showcase .portfolio-card",
+    "#site-visit .grid > div",
+    "#contact .grid > div",
+    "footer .max-w-7xl"
+  ];
+
+  const revealEls = [];
+  groups.forEach(selector => {
+    document.querySelectorAll(selector).forEach((el, i) => {
+      if (!el.hasAttribute("data-reveal")) el.setAttribute("data-reveal", "");
+      el.style.setProperty("--reveal-delay", `${(i % 2) * 0.12}s`);
+    });
+  });
+  document.querySelectorAll("[data-reveal]").forEach(el => revealEls.push(el));
+
+  const imgWrappers = document.querySelectorAll("#editorial-showcase .card-editorial-light .rounded-2xl.overflow-hidden, .portfolio-card .relative.overflow-hidden");
+  imgWrappers.forEach(el => {
+    if (el.querySelector("img")) {
+      el.setAttribute("data-reveal-img", "");
+      el.style.setProperty("--reveal-delay", "0.15s");
+      revealEls.push(el);
+    }
+  });
+
+  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    revealEls.forEach(el => el.classList.add("is-revealed"));
+    return;
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-revealed");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+  revealEls.forEach(el => io.observe(el));
+}
+
+// 12. Initialization on Load
 document.addEventListener("DOMContentLoaded", () => {
   if (window.lucide) {
     window.lucide.createIcons();
@@ -918,21 +1010,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Init 3D Text-Behind-Building Hero (Reference Image 2)
   init3DHeroParallax();
 
-  // Dynamic Navbar Scroll Glassmorphism
-  const navHeader = document.getElementById("main-nav-header");
-  if (navHeader) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 40) {
-        navHeader.classList.add("bg-[#FAF8F5]/90", "backdrop-blur-xl", "border-b", "border-[#EAE4D9]", "shadow-sm");
-        navHeader.classList.remove("py-5");
-        navHeader.classList.add("py-3");
-      } else {
-        navHeader.classList.remove("bg-[#FAF8F5]/90", "backdrop-blur-xl", "border-b", "border-[#EAE4D9]", "shadow-sm");
-        navHeader.classList.remove("py-3");
-        navHeader.classList.add("py-5");
-      }
-    });
-  }
+  initHeaderState();
+  initScrollReveal();
 
   // Render components
   updateModelDisplay();
@@ -969,6 +1048,20 @@ function init3DHeroParallax() {
     targetY = 0;
   });
 
+  // Finger-driven parallax on touch screens, since there is no cursor to follow
+  heroSection.addEventListener("touchmove", (e) => {
+    const touch = e.touches[0];
+    if (!touch) return;
+    const rect = heroSection.getBoundingClientRect();
+    targetX = ((touch.clientX - rect.left) / rect.width) * 2 - 1;
+    targetY = ((touch.clientY - rect.top) / window.innerHeight) * 2 - 1;
+  }, { passive: true });
+
+  heroSection.addEventListener("touchend", () => {
+    targetX = 0;
+    targetY = 0;
+  });
+
   function updateScroll() {
     const rect = heroSection.getBoundingClientRect();
     const totalDist = heroSection.offsetHeight - window.innerHeight;
@@ -992,17 +1085,28 @@ function init3DHeroParallax() {
     const emergence = Math.min(1, smoothProgress / 0.50);
     const easeOut = 1 - Math.pow(1 - emergence, 3);
 
-    const isMobile = window.innerWidth < 640;
-    // Initial state: shifted behind building, emerges into open sky
-    const startX = isMobile ? 38 : 75;
-    const endX = isMobile ? -14 : -20;
-    const startY = isMobile ? 55 : 30;
-    const endY = isMobile ? -30 : -70;
+    // Intro settle: media eases from a gentle zoom once the curtain lifts
+    let introZoom = 0.1;
+    if (introStartTime !== null) {
+      const t = Math.min(1, (performance.now() - introStartTime) / 2600);
+      introZoom = 0.1 * Math.pow(1 - t, 3);
+    }
 
-    const currentX = (startX * (1 - easeOut)) + (endX * easeOut) + (-mouseX * (isMobile ? 5 : 14));
-    const currentY = (startY * (1 - easeOut)) + (endY * easeOut) + (-mouseY * (isMobile ? 4 : 8));
-    const currentZ = (isMobile ? -50 : -100) * (1 - easeOut);
-    const currentRotY = ((-5) * (1 - easeOut)) + (mouseX * (isMobile ? 1.5 : 3));
+    const isMobile = window.innerWidth < 640;
+    textBack.style.opacity = "1";
+
+    // Starts shifted down and to the right, tucked behind the building at an
+    // angle, then glides up into the open sky. Phones get the same move,
+    // scaled to the smaller frame.
+    const startX = isMobile ? 10 : 75;
+    const endX = isMobile ? -6 : -20;
+    const startY = isMobile ? 4 : 30;
+    const endY = isMobile ? -24 : -70;
+
+    const currentX = (startX * (1 - easeOut)) + (endX * easeOut) + (-mouseX * (isMobile ? 6 : 14));
+    const currentY = (startY * (1 - easeOut)) + (endY * easeOut) + (-mouseY * (isMobile ? 5 : 8));
+    const currentZ = (isMobile ? -60 : -100) * (1 - easeOut);
+    const currentRotY = ((isMobile ? -7 : -5) * (1 - easeOut)) + (mouseX * (isMobile ? 2.5 : 3));
     const currentRotX = (2 * (1 - easeOut)) + (-mouseY * 2);
     const textScale = 0.96 + (easeOut * (isMobile ? 0.08 : 0.11));
 
@@ -1014,14 +1118,14 @@ function init3DHeroParallax() {
     }
 
     // 3. Foreground villa subtle zoom
-    const villaScale = 1.05 + (easeOut * 0.04);
-    const villaX = mouseX * 8;
+    const villaScale = 1.05 + introZoom + (easeOut * 0.04);
+    const villaX = mouseX * (isMobile ? 5 : 8);
     const villaY = (mouseY * 5) + (easeOut * 8);
     villaEl.style.transform = `translate3d(${villaX.toFixed(2)}px, ${villaY.toFixed(2)}px, 0) scale(${villaScale.toFixed(3)})`;
 
     // 4. Background subtle zoom
     if (bgImg) {
-      const bgScale = 1.05 + (easeOut * 0.02);
+      const bgScale = 1.05 + introZoom + (easeOut * 0.02);
       bgImg.style.transform = `scale(${bgScale.toFixed(3)})`;
     }
 
@@ -1141,10 +1245,11 @@ function filterPortfolio(category) {
   const buttons = document.querySelectorAll(".portfolio-filter-btn");
 
   buttons.forEach(btn => {
+    const base = "portfolio-filter-btn whitespace-nowrap shrink-0 px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs tracking-wider transition-all";
     if (btn.getAttribute("data-filter") === category) {
-      btn.className = "portfolio-filter-btn px-4 py-2 rounded-full text-xs font-semibold tracking-wider bg-[#0F172A] text-white shadow-md transition-all";
+      btn.className = `${base} font-semibold bg-[#14161B] text-white shadow-md`;
     } else {
-      btn.className = "portfolio-filter-btn px-4 py-2 rounded-full text-xs font-medium tracking-wider bg-white text-slate-600 hover:text-[#0F172A] border border-[#EAE4D9] transition-all";
+      btn.className = `${base} font-medium bg-white text-slate-600 hover:text-[#14161B] border border-[#EAE4D9]`;
     }
   });
 
@@ -1165,30 +1270,20 @@ function filterPortfolio(category) {
 }
 
 // 17. Mobile Menu Toggle Controller
-function toggleMobileMenu() {
+function setMobileMenu(open) {
   const drawer = document.getElementById("mobile-nav-drawer");
-  const icon = document.getElementById("mobile-menu-icon");
+  const toggle = document.getElementById("mobile-menu-toggle");
   if (!drawer) return;
-  const isHidden = drawer.classList.contains("hidden");
-  if (isHidden) {
-    drawer.classList.remove("hidden");
-    drawer.classList.add("flex");
-    if (icon) icon.setAttribute("data-lucide", "x");
-  } else {
-    drawer.classList.add("hidden");
-    drawer.classList.remove("flex");
-    if (icon) icon.setAttribute("data-lucide", "menu");
-  }
-  if (window.lucide) window.lucide.createIcons();
+  document.body.classList.toggle("menu-open", open);
+  drawer.setAttribute("aria-hidden", String(!open));
+  if (toggle) toggle.setAttribute("aria-expanded", String(open));
+  if (lenis) open ? lenis.stop() : lenis.start();
+}
+
+function toggleMobileMenu() {
+  setMobileMenu(!document.body.classList.contains("menu-open"));
 }
 
 function closeMobileMenu() {
-  const drawer = document.getElementById("mobile-nav-drawer");
-  const icon = document.getElementById("mobile-menu-icon");
-  if (drawer) {
-    drawer.classList.add("hidden");
-    drawer.classList.remove("flex");
-  }
-  if (icon) icon.setAttribute("data-lucide", "menu");
-  if (window.lucide) window.lucide.createIcons();
+  setMobileMenu(false);
 }
