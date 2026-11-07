@@ -1020,13 +1020,24 @@ body.is-loaded .reveal-fade {
   transition-delay: var(--d, 0.4s);
 }
 
+.hero-bottom-shade {
+  height: 64%;
+  background: linear-gradient(
+    to top,
+    rgba(14, 15, 18, 0.92) 0%,
+    rgba(14, 15, 18, 0.72) 38%,
+    rgba(14, 15, 18, 0.28) 68%,
+    rgba(14, 15, 18, 0) 100%
+  );
+}
+
 .hero-eyebrow {
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.34em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.82);
-  margin-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .hero-title {
@@ -1035,8 +1046,8 @@ body.is-loaded .reveal-fade {
   color: #fff;
   letter-spacing: -0.02em;
   line-height: 0.92;
-  font-size: clamp(42px, 11.6vw, 52px);
-  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.18);
+  font-size: clamp(46px, 12.4vw, 58px);
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
 }
 
 .hero-title em {

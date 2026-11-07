@@ -1093,11 +1093,37 @@ function init3DHeroParallax() {
     }
 
     const isMobile = window.innerWidth < 640;
+
+    if (isMobile) {
+      // The building fills a phone frame, so the headline stays in the dark
+      // band over the pool, fully readable. Depth is a slight come-forward,
+      // and the photo zoom carries the scroll.
+      const lift = easeOut * 10;
+      const textScaleM = 1 + easeOut * 0.035;
+      const z = -24 * (1 - easeOut);
+      textBack.style.opacity = smoothProgress > 0.78
+        ? Math.max(0, 1 - (smoothProgress - 0.78) / 0.22).toFixed(3)
+        : "1";
+      textBack.style.transform = `translate3d(0, ${(-lift).toFixed(2)}px, ${z.toFixed(2)}px) scale(${textScaleM.toFixed(3)})`;
+
+      const mobileScale = 1.04 + introZoom + easeOut * 0.05;
+      villaEl.style.transform = `translate3d(0, ${(easeOut * 12).toFixed(2)}px, 0) scale(${mobileScale.toFixed(3)})`;
+      if (bgImg) bgImg.style.transform = `scale(${(mobileScale - 0.01).toFixed(3)})`;
+
+      if (pillEl) {
+        const fade = smoothProgress > 0.72 ? Math.max(0, 1 - (smoothProgress - 0.72) / 0.28) : 1;
+        pillEl.style.opacity = fade.toFixed(3);
+        pillEl.style.transform = "none";
+      }
+
+      requestAnimationFrame(renderLoop);
+      return;
+    }
+
     textBack.style.opacity = "1";
 
     // Starts shifted down and to the right, tucked behind the building at an
-    // angle, then glides up into the open sky. Phones get the same move,
-    // scaled to the smaller frame.
+    // angle, then glides up into the open sky.
     const startX = isMobile ? 10 : 75;
     const endX = isMobile ? -6 : -20;
     const startY = isMobile ? 4 : 30;
